@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React, { useState, useEffect } from "react";
+import io from "socket.io-client";
+import "./App.css";
+//const socket = io("http://localhost:4000");
+const socket = io("https://botoroid-express-app.herokuapp.com");
+const App = () => {
+  const [title, setTitle] = useState("this is the title");
+  const [current, setCurrent] = useState(0);
+  const [end, setEnd] = useState(50);
+  useEffect(() => {
+    socket.emit("join", "greenbar");
+    socket.on("greenbardata", (data) => {
+      setTitle(data.title);
+      setCurrent(data.current);
+      setEnd(data.end);
+    });
+    socket.on("greenbartitle", (data) => {
+      setTitle(data);
+    });
+    socket.on("greenbarcurrent", (data) => {
+      setCurrent((prev) => prev + data);
+    });
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div class="border"></div>
+      <div class="fill"></div>
+      <div class="title">{title}</div>
+      <div class="amount">
+        {current}€ / {end}€{" "}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
