@@ -10,6 +10,7 @@ const App = () => {
   useEffect(() => {
     socket.emit("join", "greenbar");
     socket.on("greenbardata", (data) => {
+      console.log("new stuf");
       setTitle(data.title);
       setCurrent(data.current);
       setEnd(data.end);
@@ -23,10 +24,10 @@ const App = () => {
   }, []);
   return (
     <div className="container">
-      <div class="border"></div>
-      <div class="fill"></div>
-      <div class="title">{title}</div>
-      <div class="amount">
+      <div className="border"></div>
+      <div className="fill"></div>
+      <div className="title">{title}</div>
+      <div className="amount">
         {current}€ / {end}€{" "}
       </div>
     </div>
