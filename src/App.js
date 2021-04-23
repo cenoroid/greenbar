@@ -22,7 +22,7 @@ const App = () => {
     });
   }, []);
   return (
-    <div>
+    <div className="container">
       <div class="border"></div>
       <div class="fill"></div>
       <div class="title">{title}</div>
