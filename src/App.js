@@ -31,7 +31,7 @@ const App = () => {
       ></div>
       <div className="title">{title}</div>
       <div className="amount">
-        {current}€ / {end}€{" "}
+        {(Math.round(current * 100) / 100).toFixed(2)}€ / {end}€{" "}
       </div>
     </div>
   );
