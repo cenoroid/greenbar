@@ -25,7 +25,10 @@ const App = () => {
   return (
     <div className="container">
       <div className="border"></div>
-      <div className="fill"></div>
+      <div
+        className="fill"
+        style={{ width: (current / end) * 800 + "px" }}
+      ></div>
       <div className="title">{title}</div>
       <div className="amount">
         {current}€ / {end}€{" "}
