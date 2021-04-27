@@ -21,6 +21,9 @@
   padding-left: 10px;
   position: absolute;
   margin-top: -40px;
+  max-width: 29%;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .amount {
   margin-left: -10px;
