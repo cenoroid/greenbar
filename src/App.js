@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
 import "./App.css";
-const socket = io("http://localhost:4000");
-//const socket = io("https://botoroid-express-app.herokuapp.com");
+//const socket = io("http://localhost:4000");
+const socket = io("https://botoroid-express-app.herokuapp.com");
 const App = () => {
   const [title, setTitle] = useState("this is the title");
   const [current, setCurrent] = useState(0);
